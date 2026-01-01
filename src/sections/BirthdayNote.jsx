@@ -9,6 +9,8 @@ const BirthdayNote = ({ message }) => {
 
 Happy birthday to you! I really wish ki ye saal teri zindagi ka sabse accha saal jaye. Kyu chahata hoon mai ye ab tum sochogi, kyunki tum jabse aai ho meri zindagi mein tabse life kafi acchi chal rhi hai. Nahi yaad kab tumse baat krte krte mai tere pyaar mein gir gaya. Sach bolu? Mai selfish hoon, mujhe pura din teri yaad aati hai aur tum halka se late reply kro tho mai chid chid ho jata hoon. Koi ni, kuch din mein ye obsession control kr luga mai. Tere baarein mein sochkr mujhe aur mehnat aur kamyab hone ki energy milti hai, and I want to do this motivation for you too - jldi, successful ban mere liye tu. I really mean it cutie, I love you from the bottom of my heart. Tera gift pending hai, next jab hum milege tab tumhe duga (pakka).
 
+Yes, you are the reason I smile like an idiot sometimes.
+
 Your truly,
 
 cutu (I love this) 💖`;
