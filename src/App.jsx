@@ -4,6 +4,7 @@ import MemoryWall from './sections/MemoryWall';
 import InteractiveFun from './sections/InteractiveFun';
 import BirthdayNote from './sections/BirthdayNote';
 import VideoSection from './sections/VideoSection';
+import ThingsIKnow from './sections/ThingsIKnow';
 import FinalSection from './sections/FinalSection';
 import FloatingHearts from './components/FloatingHearts';
 import MusicPlayer from './components/MusicPlayer';
@@ -116,6 +117,7 @@ function App() {
           }
         }}
       />
+      <ThingsIKnow />
       <FinalSection lastImage={lastImage} />
     </div>
   );
