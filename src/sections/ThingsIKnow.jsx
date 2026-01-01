@@ -3,6 +3,7 @@ import './ThingsIKnow.css';
 
 const ThingsIKnow = () => {
   const [visibleItems, setVisibleItems] = useState([]);
+  const [showPromise, setShowPromise] = useState(false);
 
   const things = [
     "Being yelled at makes you shut down.",
@@ -22,6 +23,11 @@ const ThingsIKnow = () => {
         setVisibleItems((prev) => [...prev, index]);
       }, index * 300);
     });
+    
+    // Show promise message after all items are visible
+    setTimeout(() => {
+      setShowPromise(true);
+    }, things.length * 300 + 500);
   }, []);
 
   return (
@@ -41,6 +47,22 @@ const ThingsIKnow = () => {
               <div className="thing-heart">💖</div>
             </div>
           ))}
+        </div>
+        
+        <div className={`promise-message ${showPromise ? 'visible' : ''}`}>
+          <div className="promise-hearts">
+            <span className="promise-heart">💖</span>
+            <span className="promise-heart">💕</span>
+            <span className="promise-heart">💖</span>
+          </div>
+          <p className="promise-text">
+            And yes, I love the Imprefect you, the lazy you, the stubborn you, the angry you, the sad you, the happy you, the you and I am never gonna leave you when things get hard. Promise.
+          </p>
+          <div className="promise-hearts">
+            <span className="promise-heart">💖</span>
+            <span className="promise-heart">💕</span>
+            <span className="promise-heart">💖</span>
+          </div>
         </div>
       </div>
     </section>
