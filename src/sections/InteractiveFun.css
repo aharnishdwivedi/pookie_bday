@@ -1,0 +1,131 @@
+.interactive-fun {
+  min-height: 100vh;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #ffeef5 0%, #f0e6ff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.interactive-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 60vh;
+}
+
+.clickable-hearts-container {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  margin-bottom: 60px;
+}
+
+.instruction-text {
+  font-family: 'Comic Sans MS', 'Marker Felt', cursive;
+  color: #dda0dd;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  border: 2px dashed #ffb6c1;
+}
+
+.doodles-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.doodles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.doodle-item {
+  background: rgba(255, 255, 255, 0.8);
+  border: 3px solid #ffb6c1;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+  position: relative;
+}
+
+.doodle-item::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px dashed #dda0dd;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.doodle-item:hover::before {
+  opacity: 1;
+}
+
+.doodle-item:active {
+  transform: scale(0.95);
+}
+
+.doodle-emoji {
+  font-size: 3rem;
+  display: block;
+  animation: doodle-bounce 2s ease-in-out infinite;
+}
+
+.doodle-item:nth-child(2) .doodle-emoji {
+  animation-delay: 0.3s;
+}
+
+.doodle-item:nth-child(3) .doodle-emoji {
+  animation-delay: 0.6s;
+}
+
+.doodle-item:nth-child(4) .doodle-emoji {
+  animation-delay: 0.9s;
+}
+
+@keyframes doodle-bounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .interactive-fun {
+    padding: 40px 15px;
+  }
+
+  .clickable-hearts-container {
+    min-height: 300px;
+  }
+
+  .doodles-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .doodle-item {
+    padding: 20px;
+  }
+
+  .doodle-emoji {
+    font-size: 2.5rem;
+  }
+}
+

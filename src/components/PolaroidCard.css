@@ -1,0 +1,222 @@
+.polaroid-card {
+  background: white;
+  padding: 12px 12px 50px 12px;
+  box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3),
+              0 0 0 1px rgba(255, 182, 193, 0.1);
+  border-radius: 4px;
+  max-width: 280px;
+  width: 100%;
+  margin: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: float 3s ease-in-out infinite;
+  position: relative;
+  overflow: visible;
+}
+
+.bunny-frame {
+  border: 4px solid #ffb6c1;
+  border-style: dashed;
+  position: relative;
+  background: linear-gradient(135deg, #fff 0%, #ffeef5 100%);
+}
+
+.bunny-frame::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 3px solid #dda0dd;
+  border-radius: 8px;
+  z-index: -1;
+  background: rgba(255, 182, 193, 0.1);
+}
+
+.bunny-decoration {
+  position: absolute;
+  font-size: 24px;
+  z-index: 5;
+  animation: bunny-bounce 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.bunny-top-left {
+  top: -15px;
+  left: -15px;
+  animation-delay: 0s;
+}
+
+.bunny-top-right {
+  top: -15px;
+  right: -15px;
+  animation-delay: 0.3s;
+}
+
+.bunny-bottom-left {
+  bottom: -15px;
+  left: -15px;
+  animation-delay: 0.6s;
+}
+
+.bunny-bottom-right {
+  bottom: -15px;
+  right: -15px;
+  animation-delay: 0.9s;
+}
+
+.bunny-frame-inner {
+  position: relative;
+  border: 3px solid #ffb6c1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.bunny-corner {
+  position: absolute;
+  font-size: 20px;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(255, 182, 193, 0.3);
+  animation: corner-bounce 2s ease-in-out infinite;
+}
+
+.bunny-corner-tl {
+  top: -8px;
+  left: -8px;
+  animation-delay: 0s;
+}
+
+.bunny-corner-tr {
+  top: -8px;
+  right: -8px;
+  animation-delay: 0.2s;
+}
+
+.bunny-corner-bl {
+  bottom: -8px;
+  left: -8px;
+  animation-delay: 0.4s;
+}
+
+.bunny-corner-br {
+  bottom: -8px;
+  right: -8px;
+  animation-delay: 0.6s;
+}
+
+.polaroid-card:nth-child(odd) {
+  animation-delay: 0.5s;
+}
+
+.polaroid-card:nth-child(even) {
+  animation-delay: 1s;
+}
+
+.polaroid-image-wrapper {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.polaroid-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.polaroid-message {
+  margin-top: 10px;
+  font-family: 'Comic Sans MS', 'Marker Felt', cursive;
+  font-size: 14px;
+  color: #ffb6c1;
+  text-align: center;
+  padding: 5px;
+}
+
+@media (hover: hover) {
+  .polaroid-card:hover {
+    transform: rotate(0deg) scale(1.05) !important;
+    box-shadow: 0 8px 30px rgba(255, 182, 193, 0.5),
+                0 0 0 1px rgba(255, 182, 193, 0.2);
+    z-index: 10;
+  }
+}
+
+.polaroid-card.bounce {
+  animation: bounce 0.3s ease;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(var(--rotation, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--rotation, 0deg));
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1) rotate(var(--rotation, 0deg));
+  }
+  50% {
+    transform: scale(1.1) rotate(var(--rotation, 0deg));
+  }
+}
+
+@keyframes bunny-bounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) rotate(10deg) scale(1.1);
+  }
+}
+
+@keyframes corner-bounce {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(15deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .polaroid-card {
+    max-width: 240px;
+    margin: 15px;
+  }
+
+  .bunny-decoration {
+    font-size: 18px;
+  }
+
+  .bunny-top-left,
+  .bunny-top-right,
+  .bunny-bottom-left,
+  .bunny-bottom-right {
+    font-size: 20px;
+  }
+
+  .bunny-corner {
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+  }
+}
+

@@ -1,0 +1,52 @@
+.hidden-message-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.hidden-message-bubble {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: rgba(255, 255, 255, 0.98);
+  padding: 12px 18px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(255, 182, 193, 0.4);
+  border: 2px solid #ffb6c1;
+  white-space: nowrap;
+  font-family: 'Comic Sans MS', 'Marker Felt', cursive;
+  color: #ff69b4;
+  font-size: 14px;
+  z-index: 100;
+  animation: bubble-appear 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.message-emoji {
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+.message-text {
+  display: inline-block;
+}
+
+@keyframes bubble-appear {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .hidden-message-bubble {
+    font-size: 12px;
+    padding: 10px 15px;
+  }
+}
+

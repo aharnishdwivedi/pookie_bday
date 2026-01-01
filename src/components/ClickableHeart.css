@@ -1,0 +1,82 @@
+.clickable-heart {
+  position: absolute;
+  cursor: pointer;
+  font-size: 30px;
+  transition: transform 0.2s ease;
+  z-index: 5;
+  user-select: none;
+}
+
+.clickable-heart:hover {
+  transform: scale(1.2);
+}
+
+.clickable-heart:active {
+  transform: scale(0.9);
+}
+
+.heart-emoji {
+  display: block;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.clickable-heart.burst .heart-emoji {
+  animation: none;
+  opacity: 0;
+}
+
+.particle {
+  position: absolute;
+  font-size: 20px;
+  animation: particle-burst 1s ease-out forwards;
+  transform-origin: center;
+}
+
+@keyframes particle-burst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.heart-message {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(255, 182, 193, 0.3);
+  font-family: 'Comic Sans MS', 'Marker Felt', cursive;
+  color: #ff69b4;
+  opacity: 0;
+  animation: fade-in-out 2s ease;
+}
+
+@keyframes fade-in-out {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0);
+  }
+  20%, 80% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
