@@ -1,10 +1,30 @@
 import { useState, useRef, useEffect } from 'react';
 import './MusicPlayer.css';
 
-const MusicPlayer = ({ audioSrc }) => {
+const MusicPlayer = ({ audioSrc, onMusicControlReady }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef(null);
+
+  // Expose control methods to parent
+  useEffect(() => {
+    if (onMusicControlReady && audioRef.current) {
+      onMusicControlReady({
+        pause: () => {
+          if (audioRef.current && isPlaying) {
+            audioRef.current.pause();
+            setIsPlaying(false);
+          }
+        },
+        resume: () => {
+          if (audioRef.current && !isPlaying && hasInteracted) {
+            audioRef.current.play();
+            setIsPlaying(true);
+          }
+        },
+      });
+    }
+  }, [onMusicControlReady, isPlaying, hasInteracted]);
 
   useEffect(() => {
     if (audioRef.current) {

@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import LandingSection from './sections/LandingSection';
 import MemoryWall from './sections/MemoryWall';
 import InteractiveFun from './sections/InteractiveFun';
 import BirthdayNote from './sections/BirthdayNote';
+import VideoSection from './sections/VideoSection';
 import FinalSection from './sections/FinalSection';
 import FloatingHearts from './components/FloatingHearts';
 import MusicPlayer from './components/MusicPlayer';
@@ -23,11 +24,13 @@ import us5Image from './assets/us5.jpeg';
 import us6Image from './assets/us6.jpeg';
 import us8Image from './assets/us8.jpeg';
 import bdayMusic from './assets/bday.mp3';
+import videoSrc from './assets/video.mp4';
 
 function App() {
   const [confettiTrigger, setConfettiTrigger] = useState(0);
   const [tapCount, setTapCount] = useState(0);
   const [lastTapTime, setLastTapTime] = useState(0);
+  const musicControlRef = useRef(null);
 
   // Easter egg: 5 quick taps = confetti
   useEffect(() => {
@@ -89,12 +92,30 @@ function App() {
       <HeartTrail />
       <FloatingHearts count={25} />
       <ConfettiEffect trigger={confettiTrigger} />
-      <MusicPlayer audioSrc={musicSrc} />
+      <MusicPlayer 
+        audioSrc={musicSrc} 
+        onMusicControlReady={(controls) => {
+          musicControlRef.current = controls;
+        }}
+      />
       
       <LandingSection secondImage={secondImage} />
       <MemoryWall photos={photos} />
       <InteractiveFun />
       <BirthdayNote />
+      <VideoSection 
+        videoSrc={videoSrc}
+        onVideoPlay={() => {
+          if (musicControlRef.current) {
+            musicControlRef.current.pause();
+          }
+        }}
+        onVideoPause={() => {
+          if (musicControlRef.current) {
+            musicControlRef.current.resume();
+          }
+        }}
+      />
       <FinalSection lastImage={lastImage} />
     </div>
   );
